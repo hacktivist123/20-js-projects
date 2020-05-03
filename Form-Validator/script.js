@@ -11,21 +11,30 @@ const displayError = (input, message) => {
   const small = formControl.querySelector('small');
   small.innerText = message;
 };
-const displaySuccess = input => {
+const displaySuccess = (input) => {
   const formControl = input.parentElement;
   formControl.className = 'form-control success';
 };
 // Check if email is valid
-const isEmailValid = email => {
+const isEmailValid = (email) => {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
 
+const isUsernameValid = (username) => {
+  const re = /^[a-zA-Z0-9-]{3,}$/;
+  return re.test(username);
+};
 //  Event Listeners
-form.addEventListener('submit', e => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   if (username.value === '') {
     displayError(username, 'Username is Required');
+  } else if (!isUsernameValid(username.value)) {
+    displayError(
+      username,
+      `Username is not vaild, only alphanumeric characters and '-' are allowed`
+    );
   } else {
     displaySuccess(username);
   }
