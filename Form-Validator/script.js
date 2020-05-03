@@ -15,6 +15,12 @@ const displaySuccess = input => {
   const formControl = input.parentElement;
   formControl.className = 'form-control success';
 };
+// Check if email is valid
+const isEmailValid = email => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
 //  Event Listeners
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -22,5 +28,25 @@ form.addEventListener('submit', e => {
     displayError(username, 'Username is Required');
   } else {
     displaySuccess(username);
+  }
+  if (email.value === '') {
+    displayError(email, 'Email is Required');
+  } else if (!isEmailValid(email.value)) {
+    displayError(email, 'Please provide a valid email');
+  } else {
+    displaySuccess(email);
+  }
+  if (password.value === '') {
+    displayError(password, 'Password is Required');
+  } else {
+    displaySuccess(password);
+  }
+  if (
+    confirmPassword.value !== password.value ||
+    confirmPassword.value === ''
+  ) {
+    displayError(confirmPassword, `Passwords don't match`);
+  } else {
+    displaySuccess(confirmPassword);
   }
 });
