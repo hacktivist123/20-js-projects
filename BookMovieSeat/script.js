@@ -10,7 +10,7 @@ const updateSelectedCount = () => {
   const selectedSeats = document.querySelectorAll('.row .seat.selected');
   const selectedSeatsAmount = selectedSeats.length;
   count.innerText = selectedSeatsAmount;
-  total.innerText = selectedSeatsAmount * ticketPrice;
+  total.innerText = `N${selectedSeatsAmount * ticketPrice}`;
 };
 container.addEventListener('click', (e) => {
   if (
