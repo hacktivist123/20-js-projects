@@ -31,14 +31,14 @@ const setMovieData = (index, price) => {
 };
 
 // update total and count on select
-const updateSelectedCount = () => {
+const updateSelectedCountAndTotal = () => {
   const selectedSeats = document.querySelectorAll('.row .seat.selected');
   const selectedSeatsAmount = selectedSeats.length;
 
   /* copy selected seats into arr, 
   map through the arr & 
   return new array of indexes */
-  const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
+  const seatsIndex = [...selectedSeats].map(seat => [...seats].indexOf(seat));
 
   // Store selected seats in localStorage
   localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
@@ -47,22 +47,22 @@ const updateSelectedCount = () => {
 };
 
 // movie select event
-movieSelect.addEventListener('change', (e) => {
+movieSelect.addEventListener('change', e => {
   ticketPrice = Number(e.target.value);
-  updateSelectedCount();
+  updateSelectedCountAndTotal();
   setMovieData(e.target.selectedIndex, e.target.value);
 });
 
 // seats select event
-container.addEventListener('click', (e) => {
+container.addEventListener('click', e => {
   if (
     e.target.classList.contains('seat') &&
     !e.target.classList.contains('occupied')
   ) {
     e.target.classList.toggle('selected');
-    updateSelectedCount();
+    updateSelectedCountAndTotal();
   }
 });
 
 // Initial Count and Total
-updateSelectedCount();
+updateSelectedCountAndTotal();
