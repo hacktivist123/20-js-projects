@@ -6,16 +6,15 @@ const timestamp = document.getElementById('timestamp');
 
 // play & pause video
 function toggleVideoStatus() {
-  if (video.paused) {
-    video.play();
-  } else {
-    video.pause();
-  }
+  const videoPause = video.paused ? video.play() : video.pause();
+  return videoPause;
 }
 
 // update play/pause icon
 function updatePlayIcon() {
-  return false;
+  video.paused = play.innerHTML
+    ? '<i class="fa fa-play fa-2x/>'
+    : '<i class="fa fa-play fa-2x/>';
 }
 // update progress and timestamp
 function updateProgress() {
