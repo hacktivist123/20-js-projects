@@ -8,7 +8,17 @@ const swap = document.getElementById('swap');
 
 // fetch exchcange rates and update DOM
 
-function calculate() {}
+function calculate() {
+  const currencyOne = currencyEl_one.value;
+  const currencyTwo = currencyEl_two.value;
+
+  fetch(`https://api.exchangerate-api.com/v4/latest/${currencyOne}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const rate = data.rates[currencyTwo];
+      rateEl.innerText = `1 ${currencyOne} = ${rate} ${currencyTwo}`;
+    });
+}
 
 // Event Listners
 currencyEl_one.addEventListener('change', calculate);
