@@ -1,4 +1,4 @@
-//DOM Elements
+// DOM Elements
 const currencyEl_one = document.getElementById('currency-one');
 const amountEl_one = document.getElementById('amount-one');
 const currencyEl_two = document.getElementById('currency-two');
@@ -12,8 +12,8 @@ const calculate = () => {
   const currencyTwo = currencyEl_two.value;
 
   fetch(`https://api.exchangerate-api.com/v4/latest/${currencyOne}`)
-    .then((res) => res.json())
-    .then((data) => {
+    .then(res => res.json())
+    .then(data => {
       const rate = data.rates[currencyTwo];
       rateEl.innerText = `1 ${currencyOne} = ${rate} ${currencyTwo}`;
 
@@ -21,7 +21,7 @@ const calculate = () => {
     });
 };
 
-//Swap Currency
+// Swap Currency
 const swapCurrency = () => {
   const selectValueOne = currencyEl_one.value;
   currencyEl_one.value = currencyEl_two.value;
