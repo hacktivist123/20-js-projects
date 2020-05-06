@@ -7,8 +7,8 @@ const sortButton = document.getElementById('sort');
 const totalWealthButton = document.getElementById('calculate-wealth');
 
 // data from API
-const data = [];
 const apiUrl = 'https://randomuser.me/api';
+const data = [];
 // fetch random user and add money
 const fetchRandomUser = async () => {
   const res = await fetch(apiUrl);
