@@ -1,18 +1,17 @@
 // DOM Elements
-const main = document.getElementById('main');
 const addUserButton = document.getElementById('add-user');
 const doubleMoneyButton = document.getElementById('double');
+const main = document.getElementById('main');
 const showMillionairesButton = document.getElementById('show-millionaires');
 const sortButton = document.getElementById('sort');
 const totalWealthButton = document.getElementById('calculate-wealth');
 
 // data from API
-
-let data = [];
-
+const data = [];
+const apiUrl = 'https://randomuser.me/api';
 // fetch random user and add money
 const fetchRandomUser = async () => {
-  const res = await fetch('https://randomuser.me/api');
+  const res = await fetch(apiUrl);
   const fetchData = await res.json();
   const user = fetchData.results[0];
   const newUser = {
@@ -31,16 +30,15 @@ fetchRandomUser();
 fetchRandomUser();
 
 // Functions
-
 const addUser = () => {};
 const doubleMoney = () => {};
-const showMillioniares = () => {};
+const showMillionaires = () => {};
 const sort = () => {};
 const totalWealth = () => {};
 
-// Event Listners
+// Event Listeners
 addUserButton.addEventListener('click', addUser);
 doubleMoneyButton.addEventListener('click', doubleMoney);
-showMillionairesButton.addEventListener('click', showMillioniares);
+showMillionairesButton.addEventListener('click', showMillionaires);
 sortButton.addEventListener('click', sort);
 totalWealthButton.addEventListener('click', totalWealth);
