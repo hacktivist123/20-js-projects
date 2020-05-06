@@ -37,6 +37,17 @@ button {
   margin-bottom: 20px;
   font-weight: bold;
   font-size: 14px;
+  outline: none;
+}
+
+button:hover {
+  background-color: #d7d7d7;
+}
+
+button:active {
+  background-color: #d7d7d7;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
 }
 
 main {
