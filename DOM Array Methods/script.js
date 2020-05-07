@@ -31,14 +31,30 @@ fetchRandomUser();
 fetchRandomUser();
 
 // Functions
-const addUser = obj => {
+const addUser = (obj) => {
   data.push(obj);
+  updateDOM();
 };
 const doubleMoney = () => {};
 const showMillionaires = () => {};
 const sort = () => {};
 const totalWealth = () => {};
+const updateDOM = (providedData = data) => {
+  // Clear Main Div
+  main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
+  // Loop through the data array
+  providedData.forEach(person => {
+    // Create a Div
+    const element = document.createElement('div');
+    // Add a class of person to our new element
+    element.classList.add('person');
+    // Add html to our new element
+    element.innerHTML = `<strong>${person.name}</strong> ${person.money}`;
 
+    // Attach our new element to the main div
+    main.appendChild(element);
+  });
+};
 // Event Listeners
 addUserButton.addEventListener('click', addUser);
 doubleMoneyButton.addEventListener('click', doubleMoney);
