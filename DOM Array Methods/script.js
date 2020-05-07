@@ -44,7 +44,10 @@ const doubleMoney = () => {
 
 const showMillionaires = () => {};
 
-const sort = () => {};
+const sort = () => {
+  data = data.sort((a, b) => b.money - a.money);
+  updateDOM();
+};
 
 const totalWealth = () => {};
 
