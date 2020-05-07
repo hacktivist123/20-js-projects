@@ -12,6 +12,7 @@ const data = [];
 // fetch random user and add money
 const fetchRandomUser = async () => {
   const res = await fetch(apiUrl);
+  console.log(res);
   const fetchData = await res.json();
   const user = fetchData.results[0];
   const newUser = {
@@ -21,7 +22,7 @@ const fetchRandomUser = async () => {
       currency: 'USD',
     }).format(Math.floor(Math.random() * 10000000)),
   };
-  console.log(newUser);
+  addUser(newUser);
 };
 
 fetchRandomUser();
@@ -30,7 +31,9 @@ fetchRandomUser();
 fetchRandomUser();
 
 // Functions
-const addUser = () => {};
+const addUser = obj => {
+  data.push(obj);
+};
 const doubleMoney = () => {};
 const showMillionaires = () => {};
 const sort = () => {};
