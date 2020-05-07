@@ -9,7 +9,6 @@ const totalWealthButton = document.getElementById('calculate-wealth');
 // data from API
 const apiUrl = 'https://randomuser.me/api';
 let data = [];
-// fetch random user and add money
 
 // Functions
 const updateDOM = (providedData = data) => {
@@ -65,6 +64,7 @@ const fetchRandomUser = async () => {
 fetchRandomUser();
 fetchRandomUser();
 fetchRandomUser();
+
 // Event Listeners
 addUserButton.addEventListener('click', fetchRandomUser);
 doubleMoneyButton.addEventListener('click', doubleMoney);
