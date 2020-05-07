@@ -8,7 +8,7 @@ const totalWealthButton = document.getElementById('calculate-wealth');
 
 // data from API
 const apiUrl = 'https://randomuser.me/api';
-const data = [];
+let data = [];
 // fetch random user and add money
 
 // Functions
@@ -22,7 +22,12 @@ const updateDOM = (providedData = data) => {
     // Add a class of person to our new element
     element.classList.add('person');
     // Add html to our new element
-    element.innerHTML = `<strong>${person.name}</strong> ${person.money}`;
+    element.innerHTML = `<strong>${
+      person.name
+    }</strong> ${new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(person.money)}`;
 
     // Attach our new element to the main div
     main.appendChild(element);
@@ -32,7 +37,11 @@ const addUserToDOM = (obj) => {
   data.push(obj);
   updateDOM();
 };
-const doubleMoney = () => {};
+const doubleMoney = () => {
+  data = data.map((user) => ({ ...user, money: user.money * 2 }));
+  console.log(data);
+  updateDOM();
+};
 
 const showMillionaires = () => {};
 
@@ -46,11 +55,9 @@ const fetchRandomUser = async () => {
   const user = fetchData.results[0];
   const newUser = {
     name: `${user.name.first} ${user.name.last}`,
-    money: new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(Math.floor(Math.random() * 10000000)),
+    money: Math.floor(Math.random() * 10000000),
   };
+  console.log(typeof newUser.money);
   addUserToDOM(newUser);
 };
 
