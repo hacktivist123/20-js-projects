@@ -11,39 +11,39 @@ const apiUrl = 'https://randomuser.me/api';
 let data = [];
 
 // Functions
+function formatMoney(number) {
+  return `$${number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+}
 const updateDOM = (providedData = data) => {
   // Clear Main Div
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
 
   // Loop through the data array
-  providedData.forEach(person => {
+  providedData.forEach((person) => {
     // Create a Div
     const element = document.createElement('div');
     // Add a class of person to our new element
     element.classList.add('person');
     // Add html to our new element
-    element.innerHTML = `<strong>${
-      person.name
-    }</strong> ${new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(person.money)}`;
+    element.innerHTML = `<strong>${person.name}</strong> ${formatMoney(
+      person.money
+    )}`;
 
     // Attach our new element to the main div
     main.appendChild(element);
   });
 };
-const addUserToDOM = obj => {
+const addUserToDOM = (obj) => {
   data.push(obj);
   updateDOM();
 };
 const doubleMoney = () => {
-  data = data.map(user => ({ ...user, money: user.money * 2 }));
+  data = data.map((user) => ({ ...user, money: user.money * 2 }));
   updateDOM();
 };
 
 const showMillionaires = () => {
-  data = data.filter(people => people.money > 100000);
+  data = data.filter((people) => people.money > 100000);
   updateDOM();
 };
 
@@ -52,7 +52,14 @@ const sort = () => {
   updateDOM();
 };
 
-const totalWealth = () => {};
+const totalWealth = () => {
+  const wealth = data.reduce((acc, user) => (acc += user.money), 0);
+  const wealthEl = document.createElement('div');
+  wealthEl.innerHTML = `<h3>Total Wealth: <strong>${formatMoney(
+    wealth
+  )}</strong></h3>`;
+  main.appendChild(wealthEl);
+};
 
 const fetchRandomUser = async () => {
   const res = await fetch(apiUrl);
