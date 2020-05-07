@@ -43,7 +43,7 @@ const doubleMoney = () => {
 };
 
 const showMillionaires = () => {
-  data = data.filter(data => data.money > 100000);
+  data = data.filter(people => people.money > 100000);
   updateDOM();
 };
 
