@@ -16,7 +16,7 @@ const updateDOM = (providedData = data) => {
   // Clear Main Div
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
   // Loop through the data array
-  providedData.forEach((person) => {
+  providedData.forEach(person => {
     // Create a Div
     const element = document.createElement('div');
     // Add a class of person to our new element
@@ -33,13 +33,12 @@ const updateDOM = (providedData = data) => {
     main.appendChild(element);
   });
 };
-const addUserToDOM = (obj) => {
+const addUserToDOM = obj => {
   data.push(obj);
   updateDOM();
 };
 const doubleMoney = () => {
-  data = data.map((user) => ({ ...user, money: user.money * 2 }));
-  console.log(data);
+  data = data.map(user => ({ ...user, money: user.money * 2 }));
   updateDOM();
 };
 
@@ -57,7 +56,6 @@ const fetchRandomUser = async () => {
     name: `${user.name.first} ${user.name.last}`,
     money: Math.floor(Math.random() * 10000000),
   };
-  console.log(typeof newUser.money);
   addUserToDOM(newUser);
 };
 
