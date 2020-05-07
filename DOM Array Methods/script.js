@@ -42,7 +42,10 @@ const doubleMoney = () => {
   updateDOM();
 };
 
-const showMillionaires = () => {};
+const showMillionaires = () => {
+  data = data.filter(data => data.money > 100000);
+  updateDOM();
+};
 
 const sort = () => {
   data = data.sort((a, b) => b.money - a.money);
@@ -57,7 +60,7 @@ const fetchRandomUser = async () => {
   const user = fetchData.results[0];
   const newUser = {
     name: `${user.name.first} ${user.name.last}`,
-    money: Math.floor(Math.random() * 10000000),
+    money: Math.floor(Math.random() * 1000000),
   };
   addUserToDOM(newUser);
 };
