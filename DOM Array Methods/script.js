@@ -14,6 +14,7 @@ let data = [];
 const updateDOM = (providedData = data) => {
   // Clear Main Div
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
+
   // Loop through the data array
   providedData.forEach(person => {
     // Create a Div
