@@ -176,6 +176,10 @@ button:focus {
   width: 100%;
 }
 
+.modal-form .form-input:focus {
+  outline: none;
+}
+
 .close-btn {
   background: transparent;
   font-size: 25px;
