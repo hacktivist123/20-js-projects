@@ -7,3 +7,13 @@ const modal = document.getElementById('modal');
 toggle.addEventListener('click', () => {
   document.body.classList.toggle('show-nav');
 });
+
+// Show modal
+open.addEventListener('click', () => {
+  modal.classList.add('show-modal');
+});
+
+// Hide Modal
+close.addEventListener('click', () => {
+  modal.classList.remove('show-modal');
+});
