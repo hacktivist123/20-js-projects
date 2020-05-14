@@ -20,7 +20,7 @@ const displayWord = () => {
   ${selectedWord
     .split('')
     .map(
-      (word) => `<span class="letter">
+      word => `<span class="letter">
     ${correctLetters.includes(word) ? word : ''}
   </span>
   `
@@ -38,7 +38,7 @@ const displayWord = () => {
 const updateWrongLettersEl = () => {
   wrongLettersEl.innerHTML = `
   ${wrongLetters.length > 0 ? '<p>Wrong</p>' : ''}
-  ${wrongLetters.map((letter) => `<span>${letter}</span>`)}
+  ${wrongLetters.map(letter => `<span>${letter}</span>`)}
   `;
   // Display Figure Parts
   figureParts.forEach((part, index) => {
@@ -64,7 +64,7 @@ const showNotification = () => {
   }, 2000);
 };
 // Keyboard Letter Press Event Handler
-window.addEventListener('keydown', (e) => {
+window.addEventListener('keydown', e => {
   // console.log(e.keyCode);
   if (e.keyCode >= 65 && e.keyCode <= 90) {
     const letter = e.key;

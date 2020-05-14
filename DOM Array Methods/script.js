@@ -20,7 +20,7 @@ const updateDOM = (providedData = data) => {
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
 
   // Loop through the data array
-  providedData.forEach((person) => {
+  providedData.forEach(person => {
     // Create a Div
     const element = document.createElement('div');
     // Add a class of person to our new element
@@ -34,17 +34,17 @@ const updateDOM = (providedData = data) => {
     main.appendChild(element);
   });
 };
-const addUserToDOM = (obj) => {
+const addUserToDOM = obj => {
   data.push(obj);
   updateDOM();
 };
 const doubleMoney = () => {
-  data = data.map((user) => ({ ...user, money: user.money * 2 }));
+  data = data.map(user => ({ ...user, money: user.money * 2 }));
   updateDOM();
 };
 
 const showMillionaires = () => {
-  data = data.filter((people) => people.money > 1000000);
+  data = data.filter(people => people.money > 1000000);
   console.log(data);
   updateDOM();
 };
